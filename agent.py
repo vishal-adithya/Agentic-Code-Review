@@ -7,19 +7,19 @@ from graph import State
 from config import gemini_llm
 
 @tool
-def get_language(state:State) -> State:
+def get_language(code:str) -> str:
     
     """Using the code provided identifies the programming language."""
     
     try:
-        lexer = guess_lexer(state["code"])
+        lexer = guess_lexer(code)
         return {"language" : lexer.name}
     
     except ClassNotFound:
         return {"language" : "Unidentified Language!"}
 
 @tool
-def code_reveiew(state:State) -> State:
+def code_review(state:State) -> State:
     """
         Using the programing language and the programing code snipet provided identify bugs,
         performance issues, security risks,and style improvements.
